@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <style>
+        *{
+		box-sizing:border-box;
+	}
+	body{
+		font-family:Verdana, Geneva, sans-serif;
+		margin:15px 30px;
+		font-size:17px;
+		padding:8px;
+	}
+	.container{
+		background-color:#f2f2f2;
+		padding:5px 20px 15px 20px;
+		border:1px solid lightgray;
+		border-radius:3px;
+	}
+	input[type="email"],
+	input[type="password"]
+	{
+		width:100%;
+		padding:12px;
+		border:1px solid #ccc;
+		border-radius:5px;
+	}
+	.main_heading{
+		text-align:center;
+	}
+	input[type="submit"]
+	{
+		background-color:#009933;	
+		color:white;
+		border:none;
+		border-radius:4px;
+		padding:12px 20px;
+		cursor:pointer;
+		width:100%;
+	}
+    a{
+        text-align: center;
+    }
+    </style>
+</head>
+<body>
+    <h1 class="main_heading">Register</h1>
+    <div class="container">
+    <form action="/signup" method="post">
+        <label for="">Enter email ID</label>
+        <br>
+        <input type="email" placeholder="abc@gmail.com" name="username" required/>
+        <br><br>
+        <label for="">Enter password</label>
+        <br>
+        <input type="password" placeholder="Enter password" name="pw1" required/>
+        <br><br>
+        <label for="">Confirm Password</label>
+	<input type="password" placeholder="Confirm password" name="pw2" required/>
+        <br><br/>
+        <input type="submit" value="Register"/>
+        <br>
+        <center>
+        <a href="{{url_for('login')}}">Already registered?</a>
+	{{msg}}
+        </center>
+    </form>
+</div>
+</body>
+</html>

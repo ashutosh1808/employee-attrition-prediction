@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Attrition Predictor</title>
+    <style>
+	*{
+		box-sizing:border-box;
+	}
+
+	body{
+		font-family:Verdana, Geneva, sans-serif;
+		margin:15px 30px;
+		font-size:17px;
+		padding:8px;
+	}
+	.container{
+		background-color:#f2f2f2;
+		padding:5px 20px 15px 20px;
+		border:1px solid lightgray;
+		border-radius:3px;
+	}
+	input[type="number"],
+	select
+	{
+		width:100%;
+		padding:12px;
+		border:1px solid #ccc;
+		border-radius:5px;
+	}
+	fieldset{
+		background-color:#fff;
+		border:1px solid #ccc;
+	}
+	.main_heading{
+		text-align:center;
+	}
+	input[type="submit"]
+	{
+		background-color:#4daea1;	
+		color:white;
+		border:none;
+		border-radius:4px;
+		padding:12px 20px;
+		cursor:pointer;
+		width:100%;
+	}
+	input[type="submit"]:hover
+	{
+		background-color:#00cc99;
+		color:white;
+		border:none;
+		border-radius:4px;
+		padding:12px 20px;
+		cursor:pointer;
+		width:100%;
+	}
+    </style>
+</head>
+<body>
+   <h1 class="main_heading">Employee Attrition Predictor</h1>
+   <br/>
+   <h2>Welcome, {{name}}</h2>
+   <div class="container">
+   <form action="/pred" method="post">
+    <label for="">What's your monthly income? </label>
+    <br/>
+    <input type="number" min="6000" placeholder="(in $)" name="mi" required/>
+    <br><br>
+    <label for="">How old are you?</label>
+    <br/>
+    <input type="number" placeholder="enter age" min="18" name="age" required/>
+    <br><br>
+    <label for="">What's your daily rate? </label>
+    <br/>
+    <input type="number" min="1000" placeholder="(in $)" id="" name="daily_rate" required/>
+    <br/><br/>
+    <label for="">How many years since last promotion?</label>
+    <br/>
+    <input type="number" min="0" placeholder="" name="yslp" required/>
+    <br/><br/>
+    <label for="">How many years with the current manager?</label>
+    <br/>
+    <input type="number" min="0" placeholder="" name="ywcm" required/>
+    <br/><br/>
+    <label for="">How many years in the company?</label>
+    <br/>
+    <input type="number" min="0" placeholder="" name="yic" required/>
+    <br/><br/>
+    <label for="">How are you involved in your work?</label>
+    <br/>
+    <select name="ji" required>
+	<option value="">--Select an option--</option>
+        <option value="1">Low</option>
+        <option value="2">Medium</option>
+        <option value="3">High</option>
+        <option value="4">Very high</option>
+    </select>
+    <br/><br/>
+    <fieldset>
+    <legend>Do you work overtime?</legend>
+    <input type="radio" name="ot" value="1"/>Yes
+    <input type="radio" name="ot" value="0" checked/>No
+    </fieldset>
+    <br/><br/>
+    <input type="submit" value="Predict attrition"/>
+    <br/><br/>
+   </form>
+   <form action="/logout">
+	<input type="submit" value="Logout"/>
+   </form>
+	<center>
+	<h3>{{msg}}</h3>
+	</center>
+   </div>
+</body>
+</html>
