@@ -1,5 +1,6 @@
 from flask import Flask,render_template,request,redirect,url_for,session
 from sqlite3 import *
+from sklearn.preprocessing import MinMaxScaler
 import pickle
 
 app=Flask(__name__)
@@ -74,6 +75,8 @@ def signup():
 	else:
 		return render_template("signup.html")
 
+mms=MinMaxScaler()
+
 @app.route("/pred",methods=["POST"])
 def pred():
 	mi=float(request.form["mi"])
@@ -85,9 +88,10 @@ def pred():
 	ji=int(request.form["ji"])
 	ot=int(request.form["ot"])
 	d=[[mi,age,daily_rate,yslp,ywcm,yic,ji,ot]]	
-	res=model.predict(d)[0]
-	prob_no=float(model.predict_proba(d)[0][0])
-	prob_yes=float(model.predict_proba(d)[0][1])
+	nd=mms.fit_transform(d)
+	res=model.predict(nd)[0]
+	prob_no=float(model.predict_proba(nd)[0][0])
+	prob_yes=float(model.predict_proba(nd)[0][1])
 	prob_max=round(max(prob_yes,prob_no)*100,2)
 	return render_template("home.html",msg=str(res)+" with a "+str(prob_max)+"% chance")
 
