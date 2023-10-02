@@ -19,7 +19,7 @@ This is an Employee Attrition Predictor, which predicts the attrition (yes or no
 ## Acknowledgements
 
  - [Dataset Link](https://www.kaggle.com/datasets/pavansubhasht/ibm-hr-analytics-attrition-dataset)
-
+ - [Colab Notebook](https://colab.research.google.com/drive/1RKgy0O_ktbxEWWM3XkGTmWglk3-ns7xK#scrollTo=9y3_AsjHl8-9)
 
 
 ## Optimizations
